@@ -1,0 +1,15 @@
+{
+	"name": "encora",
+	"version": "1.0.0",
+	"main": "index.js",
+	"workspaces": [
+		"packages/*"
+	],
+	"private": true,
+	"repository": "https://github.com/ForetagInc/Encora.git",
+	"author": "itzezc <chirub@foretag.co>",
+	"license": "MIT",
+	"devDependencies": {
+		"lerna": "^3.20.2"
+	}
+}
