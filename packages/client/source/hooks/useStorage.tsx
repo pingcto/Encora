@@ -4,15 +4,17 @@ import { EncoraContext } from '../context'
 const useStorage = () => {
 	const [state, setState] = useContext(EncoraContext)
 
-	const getItem = (key: string) => {
-		
-	}
+	const getItem = (key: string) => state.storage[key]
 
-	const setItem = (theme: string) => {
-		setState((prevState: IState) => ({
-			...prevState, 
-			theme
-		}))
+	const setItem = (key: string, value: any) => {
+		setState((prevState: IState) => {
+			const storage: IStateStorage = { ...prevState.storage }
+			storage[key] = value
+			return {
+				...prevState,
+				storage
+			}
+		})
 	}
 
 	return {
