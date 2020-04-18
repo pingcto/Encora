@@ -2,7 +2,7 @@ import React from 'react'
 import { EncoraProvider } from './context/Context'
 
 import { ApolloProvider } from '@apollo/client'
-import { client } from './graphql'
+import { GraphQLClient } from './graphql'
 
 type IApp = {
 	endpoint: string
@@ -11,7 +11,7 @@ type IApp = {
 export const App: React.FunctionComponent<IApp> = ({ endpoint, children }) => {
 	return (
 		<EncoraProvider>
-			<ApolloProvider client={client(endpoint)}>
+			<ApolloProvider client={GraphQLClient(endpoint)}>
 				{children}
 			</ApolloProvider>
 		</EncoraProvider>
