@@ -1,1 +1,1 @@
-export { EncoraContext, EncoraContext } from './Context'
+export { EncoraProvider, EncoraContext } from './Context'

@@ -1,6 +1,6 @@
 import { ApolloClient, InMemoryCache, HttpLink } from '@apollo/client'
 
-export const client = (uri: string) => {
+export const GraphQLClient = (uri: string) => {
 	return new ApolloClient({
 		cache: new InMemoryCache(),
 		link: new HttpLink({

@@ -6,7 +6,7 @@ const useStorage = () => {
 
 	const getItem = (key: string) => state.storage[key]
 
-	const setItem = (key: string, value: any) => {
+	const setItem = (key: string, value: any) => 
 		setState((prevState: IState) => {
 			const storage: IStateStorage = { ...prevState.storage }
 			storage[key] = value
@@ -15,7 +15,6 @@ const useStorage = () => {
 				storage
 			}
 		})
-	}
 
 	return {
 		getItem,

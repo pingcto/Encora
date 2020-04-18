@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 const initialState: IState = {
 	theme: 'default',
 	language: 'en',
+	languageDefs: {},
 	storage: {}
 }
 
