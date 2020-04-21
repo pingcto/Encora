@@ -18,7 +18,8 @@
 		"url": "git+https://github.com/ForetagInc/Encora.git"
 	},
 	"scripts": {
-		"test": "echo \"Error: run tests from root\" && exit 1"
+		"run:web": "webpack-dev-server -d --config ./config/web/webpack.config.js --inline --hot --colors",
+		"build:web": "webpack -p --config ./config/web/webpack.config.js"
 	},
 	"bugs": {
 		"url": "https://github.com/ForetagInc/Encora/issues"
