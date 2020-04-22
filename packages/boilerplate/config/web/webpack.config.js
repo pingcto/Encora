@@ -1,5 +1,5 @@
-const path = require('path');
-const webpack = require('webpack');
+const path = require('path')
+const webpack = require('webpack')
 
 const appDirectory = path.resolve(__dirname, '../../')
 
@@ -14,8 +14,16 @@ const babelLoaderConfiguration = {
 		loader: 'babel-loader',
 		options: {
 			cacheDirectory: true,
-			presets: ['react-native'],
-			plugins: ['react-native-web']
+			presets: [
+				'@babel/preset-env',
+				'@babel/preset-typescript',
+				'@babel/preset-react',
+				'react-native'
+			],
+			plugins: [
+				'@babel/plugin-transform-runtime',
+				'react-native-web'
+			]
 		}
 	}
 }
