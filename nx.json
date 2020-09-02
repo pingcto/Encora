@@ -1,0 +1,40 @@
+{
+  "npmScope": "encora",
+  "affected": {
+    "defaultBase": "master"
+  },
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.base.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "encora": {
+      "tags": []
+    },
+    "encora-e2e": {
+      "tags": [],
+      "implicitDependencies": ["encora"]
+    },
+    "ui": {
+      "tags": []
+    },
+    "ui-e2e": {
+      "tags": [],
+      "implicitDependencies": ["ui"]
+    }
+  }
+}

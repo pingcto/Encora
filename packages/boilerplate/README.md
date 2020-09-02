@@ -1,1 +1,0 @@
-# Encora\Boilerplate

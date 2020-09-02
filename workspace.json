@@ -1,0 +1,233 @@
+{
+  "version": 1,
+  "projects": {
+    "encora": {
+      "root": "apps/encora",
+      "sourceRoot": "apps/encora/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/encora",
+            "index": "apps/encora/src/index.html",
+            "main": "apps/encora/src/main.tsx",
+            "polyfills": "apps/encora/src/polyfills.ts",
+            "tsConfig": "apps/encora/tsconfig.app.json",
+            "assets": ["apps/encora/src/favicon.ico", "apps/encora/src/assets"],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/encora/src/environments/environment.ts",
+                  "with": "apps/encora/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "encora:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "encora:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/encora/tsconfig.app.json",
+              "apps/encora/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/encora/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/encora/jest.config.js",
+            "tsConfig": "apps/encora/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "encora-e2e": {
+      "root": "apps/encora-e2e",
+      "sourceRoot": "apps/encora-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/encora-e2e/cypress.json",
+            "tsConfig": "apps/encora-e2e/tsconfig.e2e.json",
+            "devServerTarget": "encora:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "encora:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/encora-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/encora-e2e/**/*"]
+          }
+        }
+      }
+    },
+    "ui": {
+      "root": "apps/ui",
+      "sourceRoot": "apps/ui/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/ui",
+            "index": "apps/ui/src/index.html",
+            "main": "apps/ui/src/main.tsx",
+            "polyfills": "apps/ui/src/polyfills.ts",
+            "tsConfig": "apps/ui/tsconfig.app.json",
+            "assets": ["apps/ui/src/favicon.ico", "apps/ui/src/assets"],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ui/src/environments/environment.ts",
+                  "with": "apps/ui/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "ui:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "ui:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": [
+              "apps/ui/tsconfig.app.json",
+              "apps/ui/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ui/**/*"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ui/jest.config.js",
+            "tsConfig": "apps/ui/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ui-e2e": {
+      "root": "apps/ui-e2e",
+      "sourceRoot": "apps/ui-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/ui-e2e/cypress.json",
+            "tsConfig": "apps/ui-e2e/tsconfig.e2e.json",
+            "devServerTarget": "ui:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ui:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "tsConfig": ["apps/ui-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/ui-e2e/**/*"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "schematics": {
+    "@nrwl/react": {
+      "application": {
+        "style": "styled-components",
+        "linter": "eslint",
+        "babel": true
+      },
+      "component": {
+        "style": "styled-components"
+      },
+      "library": {
+        "style": "styled-components",
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "encora"
+}
