@@ -22,13 +22,6 @@
     }
   },
   "projects": {
-    "encora": {
-      "tags": []
-    },
-    "encora-e2e": {
-      "tags": [],
-      "implicitDependencies": ["encora"]
-    },
     "ui": {
       "tags": []
     },
