@@ -5,6 +5,5 @@
 	"editor.insertSpaces": false,
 	"editor.tabSize": 6,
 	"editor.fontSize": 16,
-	"workbench.tree.indent": 20,
-	"workbench.iconTheme": "vscode-icons"
+	"workbench.tree.indent": 20
 }
