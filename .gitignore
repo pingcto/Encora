@@ -1,5 +1,5 @@
 # compiled output
-/dist
+dist
 /tmp
 /out-tsc
 
@@ -31,6 +31,7 @@ npm-debug.log
 yarn-error.log
 testem.log
 /typings
+lerna-debug.log
 
 # System Files
 .DS_Store

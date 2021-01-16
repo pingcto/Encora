@@ -1,0 +1,30 @@
+{
+	"name": "@encora/icon",
+	"version": "2.5.0",
+	"description": "",
+	"keywords": [],
+	"author": "itzezc <chirub@foretag.co>",
+	"license": "ISC",
+	"main": "source/index.tsx",
+	"directories": {
+		"source": "source",
+		"test": "__tests__"
+	},
+	"files": [
+		"source"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ForetagInc/Encora.git"
+	},
+	"scripts": {
+		"test": "jest"
+	},
+	"jest": {
+		"preset": "jest-expo"
+	},
+	"bugs": {
+		"url": "https://github.com/ForetagInc/Encora/issues"
+	},
+	"homepage": "https://github.com/ForetagInc/Encora#readme"
+}

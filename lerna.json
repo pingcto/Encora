@@ -1,6 +1,12 @@
 {
 	"packages": [
-		"components/*"
+		"components/*",
+		"packages/*"
 	],
-	"version": "independent"
+	"hoist": true,
+	"stream": true,
+	"version": "independent",
+	"bootstrap": {
+		"npmClientArgs": ["--no-package-lock"]
+	}
 }
