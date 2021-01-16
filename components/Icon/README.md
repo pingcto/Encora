@@ -1,11 +1,5 @@
-# `Icon`
+# Icons
 
-> TODO: description
+Encora uses RemixIcon
 
-## Usage
-
-```
-const icon = require('Icon');
-
-// TODO: DEMONSTRATE API
-```
+This package's version is in sync with Remix Icon version.

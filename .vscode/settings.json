@@ -1,9 +1,0 @@
-{
-	"javascript.validate.enable": true,
-	"javascript.suggestionActions.enabled": false,
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"editor.insertSpaces": false,
-	"editor.tabSize": 6,
-	"editor.fontSize": 16,
-	"workbench.tree.indent": 20
-}
