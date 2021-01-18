@@ -1,12 +1,16 @@
 import * as React from 'react';
 
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import { NavigationContainer, Route } from '@react-navigation/native';
+import { createStackNavigator, StackNavigationOptions } from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
 type StackNavigatorProps = {
-	screens: { name: string, component: React.FunctionComponent }[]
+	screens: {
+		name: string,
+		component: React.FunctionComponent,
+		options?: StackNavigationOptions | ((props: { route: Route<string, object | undefined>; navigation: any; }) => StackNavigationOptions) | undefined
+	}[],
 	children?: React.ReactNode
 }
 
