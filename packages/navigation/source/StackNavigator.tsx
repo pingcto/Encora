@@ -5,7 +5,7 @@ import { createStackNavigator, StackNavigationOptions } from '@react-navigation/
 
 const Stack = createStackNavigator();
 
-type StackNavigatorProps = {
+export type StackNavigatorProps = {
 	screens: {
 		name: string,
 		component: React.FunctionComponent,
