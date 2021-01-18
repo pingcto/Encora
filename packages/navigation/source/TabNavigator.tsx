@@ -21,7 +21,7 @@ export const TabNavigator: React.FunctionComponent<TabNavigatorProps> =
 				<Tab.Navigator>
 					{
 						screens.map(screen =>
-							<Tab.Screen {...screen} />
+							<Tab.Screen key={screen.name} {...screen} />
 						)
 					}
 				</Tab.Navigator>

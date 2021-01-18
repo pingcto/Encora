@@ -19,10 +19,10 @@ export const StackNavigator: React.FunctionComponent<StackNavigatorProps> =
 		return(
 			<NavigationContainer>
 				<Stack.Navigator>
-					{
-						screens.map(screen => {
-							<Stack.Screen {...screen} />
-						})
+				{
+						screens.map(screen =>
+							<Stack.Screen key={screen.name} {...screen} />
+						)
 					}
 				</Stack.Navigator>
 			</NavigationContainer>
