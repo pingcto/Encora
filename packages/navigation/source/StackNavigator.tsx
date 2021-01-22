@@ -9,7 +9,7 @@ export type StackNavigatorProps = {
 	screens: {
 		name: string,
 		component: React.FunctionComponent,
-		options?: StackNavigationOptions | ((props: { route: Route<string, object | undefined>; navigation: any; }) => StackNavigationOptions) | undefined
+		options?: StackNavigationOptions | ((props: { route: Route<string, object | undefined>; navigation: any; }) => StackNavigationOptions)
 	}[],
 	children?: React.ReactNode
 }
@@ -19,12 +19,14 @@ export const StackNavigator: React.FunctionComponent<StackNavigatorProps> =
 		return(
 			<NavigationContainer>
 				<Stack.Navigator>
-				{
+					{
 						screens.map(screen =>
-							<Stack.Screen key={screen.name} {...screen} />
+							<Stack.Screen key={ screen.name } { ...screen } />
 						)
 					}
 				</Stack.Navigator>
 			</NavigationContainer>
 		);
 	}
+
+StackNavigator.displayName = 'StackNavigator';

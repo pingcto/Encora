@@ -1,24 +1,30 @@
 import * as React from 'react';
 
-import { NavigationContainer, Route } from '@react-navigation/native';
-import { createBottomTabNavigator, BottomTabNavigationOptions } from '@react-navigation/bottom-tabs';
+import { NavigationContainer } from '@react-navigation/native';
+import {
+	createBottomTabNavigator,
+	BottomTabBarProps,
+} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-export type TabNavigatorProps = {
-	screens: {
-		name: string,
-		component: React.FunctionComponent,
-		options?: BottomTabNavigationOptions | ((props: { route: Route<string, object | undefined>; navigation: any; }) => BottomTabNavigationOptions) | undefined
-	}[],
+interface ITabScreen {
+	name: string
+	component: string,
+}
+
+interface ITabNavigator extends BottomTabBarProps {
+	screens: ITabScreen[],
 	children?: React.ReactNode
 }
 
-export const TabNavigator: React.FunctionComponent<TabNavigatorProps> =
-	({ screens }) => {
+export const TabNavigator: React.FunctionComponent<ITabNavigator> =
+	({ navigation, screens }) => {
 		return(
 			<NavigationContainer>
-				<Tab.Navigator>
+				<Tab.Navigator
+					{...navigation}
+				>
 					{
 						screens.map(screen =>
 							<Tab.Screen key={screen.name} {...screen} />

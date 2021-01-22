@@ -1,5 +1,1 @@
-import * as Print from 'expo-print';
-
-export {
-    Print
-}
+export * as Print from 'expo-print';

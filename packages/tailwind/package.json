@@ -1,0 +1,32 @@
+{
+	"name": "@encora/tailwind",
+	"version": "1.0.0",
+	"description": "Tailwind CSS for React Native and Expo.",
+	"keywords": [
+		"tailwind",
+		"tailwindcss",
+		"react-native",
+		"encora"
+	],
+	"author": "Chiru B <chirub@foretag.co>",
+	"license": "ISC",
+	"main": "lib/tailwind.js",
+	"directories": {
+		"lib": "lib",
+		"test": "__tests__"
+	},
+	"files": [
+		"lib"
+	],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/ForetagInc/Encora.git"
+	},
+	"scripts": {
+		"test": "echo \"Error: run tests from root\" && exit 1"
+	},
+	"bugs": {
+		"url": "https://github.com/ForetagInc/Encora/issues"
+	},
+	"homepage": "https://github.com/ForetagInc/Encora#readme"
+}

@@ -9,7 +9,7 @@ export type DrawerNavigatorProps = {
 	screens: {
 		name: string,
 		component: React.FunctionComponent,
-		options?: DrawerNavigationOptions | ((props: { route: Route<string, object | undefined>; navigation: any; }) => DrawerNavigationOptions) | undefined
+		options?: DrawerNavigationOptions | ((props: { route: Route<string, object | undefined>; navigation: any; }) => DrawerNavigationOptions)
 	}[],
 	children?: React.ReactNode
 }
