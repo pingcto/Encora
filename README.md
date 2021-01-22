@@ -33,7 +33,7 @@ All components are built on top of Tailwind and will work on iOS, Android and We
 	<br />
 	The idea is to allow for the development and deployment of high performance Web apps and Native mobile apps from one codebase, removing the need for multiple frontend codebases.
 	<br />
-	We like the functionality of React, React Native, Redux, Tailwind and other tools, but we hate.
+	We like the functionality of React, React Native, Redux, Tailwind and other tools, but we hate the boilerplate, verbosity and the lack integrations between these amazing tools, Encora is being created to address all this.
 </details><br />
 <details>
 	<summary>Will the project always be open source?</summary>
