@@ -1,3 +1,5 @@
 module.exports = {
-	extends: '@foretag'
+	extends: [
+		'@foretag/eslint-config/react-native'
+	]
 }
