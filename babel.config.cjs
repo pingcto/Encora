@@ -3,10 +3,11 @@ module.exports = {
 		'@babel/preset-env'
 	],
 	env: {
-		testing: {
+		test: {
 			presets: [
-				[ "@babel/preset-env", { targets: { node: "current" }} ],
-				'@babel/preset-react'
+				[ '@babel/preset-env', { targets: { node: 'current' }} ],
+				'@babel/preset-react',
+				'@babel/preset-flow',
 			],
 			plugins: [
 				'@babel/plugin-proposal-class-properties'
