@@ -11,10 +11,10 @@
 			"packages/*"
 		]
 	},
-	"jest": {
-		"preset": "react-native"
+	"scripts": {
+		"test": "jest",
+		"coverage": "jest --coverage"
 	},
-	"scripts": {},
 	"peerDependencies": {
 		"react": "^17.0.1",
 		"react-native": "^0.63.4",
@@ -22,7 +22,6 @@
 		"expo": "~40.0.0"
 	},
 	"devDependencies": {
-		"@babel/preset-react": "^7.12.10",
 		"@foretag/eslint-config": "^1.1.6",
 		"@foretag/tsconfig": "0.0.1",
 		"@types/dom-screen-wake-lock": "^1.0.0",
@@ -39,6 +38,8 @@
 		"react-native": "^0.63.3",
 		"react-native-web": "0.13.14",
 		"tailwindcss": "^2.0.2",
+		"ts-jest": "^26.4.4",
+		"ts-node": "^9.1.1",
 		"typescript": "^4.1.3"
 	},
 	"dependencies": {
