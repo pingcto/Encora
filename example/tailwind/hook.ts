@@ -5,7 +5,7 @@ import { create } from './create';
 import { IScreenConfig, IStyles } from './interfaces';
 
 export const createHook = (React: any, ReactNative: any) => {
-	return (tailwindStyles: IStyles, webStyles: IStyles, screensConfig: IScreenConfig) => {
+	return (tailwindStyles: IStyles, webStyles: IStyles, screensConfig: IScreenConfig, spacesConfig: IStyles) => {
 
 		if (!React || !React.useMemo)
 			throw new Error('Unsupported react version, useMemo hook not found')
@@ -30,7 +30,7 @@ export const createHook = (React: any, ReactNative: any) => {
 			const cacheKey = breakPointsConfig.map(breakpoint => `${breakpoint.name}=${breakpoint.actif}`);
 
 			return React.useMemo(() => {
-				return create(tailwindStyles, webStyles, breakPointsConfig);
+				return create(tailwindStyles, webStyles, breakPointsConfig, spacesConfig);
 			}, [tailwindStyles, cacheKey]);
 		}
 	}

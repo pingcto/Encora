@@ -11,14 +11,17 @@ const createHook = __createHook(React, ReactNative);
 import defaultStyles from './styles.json';
 import defaultWebStyles from './web.json';
 import defaultScreens from './screens.json';
+import defaultSpaces from './spaces.json';
 
 // const { getColor } = _create(defaultStyles, {}, {});
 
 export const useTailwind = () => {
-	const _useTailwind = createHook(defaultStyles, defaultWebStyles, defaultScreens);
+	const _useTailwind = createHook(defaultStyles, defaultWebStyles, defaultScreens, defaultSpaces);
 
 	return _useTailwind();
 }
+
+export { Div } from './components/Div';
 
 // export { getColor };
 // export const create = (tailwindStyles: Object) => _create((tailwindStyles as IStyles), (defaultWebStyles as IStyles), []);

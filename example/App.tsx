@@ -1,13 +1,36 @@
 import React from 'react';
-import { Text, Image, View } from 'react-native';
-import { useTailwind } from './tailwind';
+import { Text, View, Image, Platform } from 'react-native';
+import { StatusBar } from 'expo-status-bar';
+import { useTailwind, Div } from './tailwind/index';
 
 const App = () => {
 
 	const { tailwind } = useTailwind();
 
+	// return(
+	// 	<>
+	// 		<StatusBar style='dark' backgroundColor='skyblue' />
+	// 		<Div className='mt-6'>
+	// 			<Div
+	// 				className='p-5 m-4 inline-flex space-x-4 bg-indigo-300 bg-stripes bg-stripes-white rounded-md hover:bg-gray-800'
+	// 			>
+	// 				<Text style={ tailwind('flex-1 rounded-md text-white font-italic text-center bg-indigo-500 px-6 py-4') }>Text</Text>
+	// 			</Div>
+	// 		</Div>
+	// 	</>
+	// )
+
+
+	// return (
+	// 	<View style={ tailwind('p-4 inline-flex space-x-4 bg-indigo-300 bg-stripes bg-stripes-white rounded-md') }>
+	// 		<Text style={ tailwind('flex-1 rounded-md text-white font-extrabold text-center bg-indigo-500 px-6 py-4') }>1</Text>
+	// 		<Text style={ tailwind('flex-1 rounded-md text-white font-extrabold text-center bg-indigo-500 px-6 py-4') }>2</Text>
+	// 		<Text style={ tailwind('flex-1 rounded-md text-white font-extrabold text-center bg-indigo-500 px-6 py-4') }>3</Text>
+	// 	</View>
+	// );
+
 	return (
-		<View style={ tailwind('bg-gray-800') }>
+		<Div className='bg-gray-800 hover:bg-blue-500'>
 			<View style={ tailwind('block max-w-7xl mx-auto px-2 sm:px-6 lg:px-8') }>
 				<View style={ tailwind('relative flex max-w-7xl items-center justify-between h-16') }>
 					<View style={ tailwind('absolute inset-y-0 left-0 flex items-center sm:hidden') }>
@@ -68,7 +91,7 @@ const App = () => {
 					<Text style={ tailwind('text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium') }>Calendar</Text>
 				</View>
 			</View>
-		</View>
+		</Div>
 	)
 
 	// return (

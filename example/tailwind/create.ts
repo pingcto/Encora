@@ -7,6 +7,7 @@
 /* eslint-disable prefer-named-capture-group */
 
 import React from 'react';
+import { Platform } from 'react-native';
 import { IBreakpointConfig, IStyle, IStyles } from './interfaces';
 
 const defaultBreakpointKey = '__default';
@@ -45,7 +46,7 @@ export const addLetterSpacing = (style: any, letterSpacing: any) => {
 	style.letterSpacing = Number.parseFloat(letterSpacing) * style.fontSize;
 }
 
-export const create = (tailwindStyles: IStyles, _webStyles: IStyles, breakPointsConfig: IBreakpointConfig[]) => {
+export const create = (tailwindStyles: IStyles, _webStyles: IStyles, breakPointsConfig: IBreakpointConfig[], spacesConfig: IStyles) => {
 
     const screenNames: string[] = breakPointsConfig
 		.map(breakpoint => breakpoint.name);
@@ -59,7 +60,7 @@ export const create = (tailwindStyles: IStyles, _webStyles: IStyles, breakPoints
 
 	const breakpointPrefixRegex = new RegExp(`^(${screenNames.join('|')}):`);
 
-	const tailwind = (classNames?: string): React.CSSProperties => {
+	const tailwind = (classNames?: string, hovered?: boolean): React.CSSProperties => {
 
 		const style = {};
 
@@ -83,8 +84,6 @@ export const create = (tailwindStyles: IStyles, _webStyles: IStyles, breakPoints
 
 		let letterSpacingClassName = null;
 
-		// console.log(supportedScreens);
-
 		for (const screen of supportedScreens) {
 
 			if (!classNamesByScreens[screen])
@@ -95,13 +94,22 @@ export const create = (tailwindStyles: IStyles, _webStyles: IStyles, breakPoints
 			addFontVariant(style, seperateClassNames, breakpointPrefix);
 
 			for (const screenClassName of classNamesByScreens[screen]) {
+
 				const className = screenClassName.replace(breakpointPrefixRegex, '');
 
-				if (!tailwindStyles[className])
+				const name = className.startsWith('hover:')
+							&& hovered === true ? className.replace('hover:', '') : className;
+
+				if (!tailwindStyles[name]) {
+
+					// if (spacesConfig[className])
+					// 	console.log('It exists', className)
+
 					console.warn(`Unsupported Tailwind class: "${screenClassName}"`);
+				}
 				else if (className.startsWith('tracking-'))
 					letterSpacingClassName = className;
-				else Object.assign(style, tailwindStyles[className]);
+				else Object.assign(style, tailwindStyles[name]);
 			}
 		}
 
