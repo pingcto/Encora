@@ -1,29 +1,27 @@
 'use strict';
+
 const css = require('css');
 const cssToReactNative = require('css-to-react-native').default;
 
 const remToPx = value => `${Number.parseFloat(value) * 16}px`;
 
 const getStyles = rule => {
-	const styles = rule.declarations
-		.filter(({property, value}) => {
+	const styles =  rule.declarations
+		.filter(({ property, value }) => {
 			// Skip line-height utilities without units
-			if (property === 'line-height' && !value.endsWith('rem')) {
-				return false;
-			}
-
-			return true;
+			if (property  === 'line-height'
+				&& !value.endsWith('rem'))
+					return false;
 		})
-		.map(({property, value}) => {
-			if (value.endsWith('rem')) {
+		.map(({ property, value }) => {
+			if (value.endsWith('rem'))
 				return [property, remToPx(value)];
-			}
 
 			return [property, value];
 		});
 
 	return cssToReactNative(styles);
-};
+}
 
 const unsupportedProperties = new Set([
 	'box-sizing',
@@ -91,11 +89,10 @@ const unsupportedProperties = new Set([
 	'stroke-width'
 ]);
 
-const isUtilitySupported = (utility, rule) => {
+const isUtilitySupported =  (utility, rule) => {
 	// Skip utilities with pseudo-selectors
-	if (utility.includes(':')) {
+	if (utility.includes(':'))
 		return false;
-	}
 
 	// Skip unsupported utilities
 	if (
@@ -108,88 +105,62 @@ const isUtilitySupported = (utility, rule) => {
 		].includes(utility) ||
 		/^(space|placeholder|from|via|to|divide)-/.test(utility) ||
 		/^-?(scale|rotate|translate|skew)-/.test(utility)
-	) {
+	)
 		return false;
-	}
 
 	// Skip utilities with unsupported properties
 	for (const {property, value} of rule.declarations) {
-		if (unsupportedProperties.has(property)) {
+		if (unsupportedProperties.has(property))
 			return false;
-		}
 
-		if (property === 'display' && !['flex', 'none'].includes(value)) {
+		if (property === 'display' && !['flex', 'none'].includes(value))
 			return false;
-		}
 
 		if (
 			property === 'overflow' &&
 			!['visible', 'hidden', 'scroll'].includes(value)
-		) {
+		)
 			return false;
-		}
 
-		if (property === 'position' && !['absolute', 'relative'].includes(value)) {
+		if (property === 'position' && !['absolute', 'relative'].includes(value))
 			return false;
-		}
 
-		if (property === 'line-height' && !value.endsWith('rem')) {
+		if (property === 'line-height' && !value.endsWith('rem'))
 			return false;
-		}
 
 		if (
 			value === 'auto' ||
 			value.endsWith('vw') ||
 			value.endsWith('vh') ||
 			value === 'currentColor'
-		) {
+		)
 			return false;
-		}
 	}
 
 	return true;
-};
+}
 
-const getBreakpointConfig = breakpoint => {
-	if (typeof breakpoint !== 'string' || !/^\d+px$/.test(breakpoint)) {
-		throw new Error('Unsupported breakpoint format (Example "sm": "640px").');
-	}
-
-	const minwidth = Number(breakpoint.replace('px', ''));
-
-	return {min: minwidth};
-};
-
-module.exports = (source, breakpoints) => {
-	const {stylesheet} = css.parse(source);
+module.exports = source => {
+	const { stylesheet } = css.parse(source);
 
 	// Mapping of Tailwind class names to React Native styles
-	const styles = {};
+	const styles = {}
 
 	for (const rule of stylesheet.rules) {
-		if (rule.type === 'rule') {
+		if (rule.type ===  'rule') {
 			for (const selector of rule.selectors) {
 				const utility = selector.replace(/^\./, '').replace('\\/', '/');
 
-				if (isUtilitySupported(utility, rule)) {
+				if (isUtilitySupported(utility, rule))
 					styles[utility] = getStyles(rule);
-				}
 			}
 		}
 	}
 
 	// Additional styles that we're not able to parse correctly automatically
-	styles.underline = {textDecorationLine: 'underline'};
+	styles.underline = { textDecoratorLine: 'underline' }
 	styles['line-through'] = {textDecorationLine: 'line-through'};
 	styles['no-underline'] = {textDecorationLine: 'none'};
 
-	// Extract breakpoints from tailwind config
-	const screens = {};
-	const screenKeys = Object.keys(breakpoints || {});
-
-	for (const screen of screenKeys) {
-		screens[screen] = getBreakpointConfig(breakpoints[screen]);
-	}
-
-	return {screens, styles};
+	return styles;
 };
